@@ -15,15 +15,12 @@ type IconComponent = React.ComponentType<React.ComponentProps<typeof MaterialIco
 type Props = TextProps &{
     Icon?: IconComponent,
     Iconname?: string,
-    train?: string,
-    series?: string,
-    time?: string,
-    weight?: string,
+    act?: string,
     hour?: string
 }
 
-export const Exercise = ((Props:Props)=>{
-    const{Icon,Iconname,train,series,time,weight,hour,...rest} = Props
+export const ScheduleItem = ((Props:Props)=>{
+    const{Icon,Iconname,act,hour,...rest} = Props
     const [marked, setMarked] = useState(false);
 
     const currentIcon = marked ? 'check-circle-outline' : Iconname ?? 'panorama-fisheye';
@@ -43,12 +40,10 @@ export const Exercise = ((Props:Props)=>{
             )}
             <View style={style.info}>
                 <View style={style.boxtrain}>
-                    <Text style={style.train}>{train}</Text>
+                    <Text style={style.train}>{act}</Text>
                 </View>
                 <View style={style.boxatach}>
-                    <Text style={style.atach}>{series}</Text>
-                    <Text style={style.atach}>{time}</Text>
-                    <Text style={style.atach}>{weight}</Text>
+                    <Text style={style.atach}>{hour}</Text>
                 </View>
             </View>
         </View>

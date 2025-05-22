@@ -8,16 +8,16 @@ from 'react-native';
 import { style } from "./styles";
 import { Upper } from "../../components/upper";
 import { Bottom } from "../../components/bottom";
-import {AntDesign, MaterialIcons,} from '@expo/vector-icons';
+import {AntDesign, FontAwesome,} from '@expo/vector-icons';
 import { Uptext } from "../../components/uptext";
-import { ScheduleItem } from "../../components/scheduleItem";
+import { SocialItem } from "../../components/socialItem";
 
-export default function ToDo(){
+export default function Social(){
 
     return(
         <>
         <Upper
-            title="A Fazer"
+            title="Social"
             Icon={AntDesign}
             IconName="doubleleft"
         />
@@ -26,27 +26,27 @@ export default function ToDo(){
                 text="Dia da semana"
                 subtext="Editar"
             />
-            <ScheduleItem
-                Icon={MaterialIcons}
-                Iconname="panorama-fisheye"
+            <SocialItem
+                Icon={FontAwesome}
+                Iconname="user-circle-o"
                 act="Fazer marmita"
                 hour="10:00"
             />
-            <ScheduleItem
-                Icon={MaterialIcons}
-                Iconname="panorama-fisheye"
+            <SocialItem
+                Icon={FontAwesome}
+                Iconname="user-circle-o"
                 act="Almoço"
                 hour="12:00"
             />
-            <ScheduleItem
-                Icon={MaterialIcons}
-                Iconname="panorama-fisheye"
+            <SocialItem
+                Icon={FontAwesome}
+                Iconname="user-circle-o"
                 act="Treinar"
                 hour="14:00"
             />
-            <ScheduleItem
-                Icon={MaterialIcons}
-                Iconname="panorama-fisheye"
+            <SocialItem
+                Icon={FontAwesome}
+                Iconname="user-circle-o"
                 act="Café"
                 hour="6:30"
             />

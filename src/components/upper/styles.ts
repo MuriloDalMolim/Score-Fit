@@ -6,7 +6,6 @@ export const style = StyleSheet.create({
         width:'100%',
         backgroundColor:themes.colors.darkblue,
         height:Dimensions.get('window').height/5.5,
-        justifyContent:'center',
         flexDirection:'row',
         alignItems:'center',
     },
@@ -17,10 +16,10 @@ export const style = StyleSheet.create({
         marginLeft: 15, 
         justifyContent:'flex-end',   
         marginTop:50,
-        marginRight:'25%'
     },
     icon:{
-        marginTop:50
+        marginTop:50,
+        marginLeft: 15, 
     }
     
 })

@@ -10,7 +10,7 @@ import { Upper } from "../../components/upper";
 import { Bottom } from "../../components/bottom";
 import {AntDesign, MaterialIcons,} from '@expo/vector-icons';
 import { Uptext } from "../../components/uptext";
-import { Exercise } from "../../components/exercise";
+import { ExerciseItem } from "../../components/exerciseItem";
 
 export default function PlanilhaTreino(){
 
@@ -26,7 +26,7 @@ export default function PlanilhaTreino(){
                 text="Treino X"
                 subtext="Gerenciar"
             />
-            <Exercise
+            <ExerciseItem
                 Icon={MaterialIcons}
                 Iconname="panorama-fisheye"
                 train="Supino inclinado c/ halter"
@@ -34,7 +34,7 @@ export default function PlanilhaTreino(){
                 time="2min"
                 weight="18kg"
             />
-            <Exercise
+            <ExerciseItem
                 Icon={MaterialIcons}
                 Iconname="panorama-fisheye"
                 train="Voador"
@@ -42,7 +42,7 @@ export default function PlanilhaTreino(){
                 time="2min"
                 weight="6Br"
             />
-            <Exercise
+            <ExerciseItem
                 Icon={MaterialIcons}
                 Iconname="panorama-fisheye"
                 train="Supino Declinado"
@@ -50,7 +50,7 @@ export default function PlanilhaTreino(){
                 time="3min"
                 weight="25kg"
             />
-            <Exercise
+            <ExerciseItem
                 Icon={MaterialIcons}
                 Iconname="panorama-fisheye"
                 train="Triceps Corda"
@@ -58,7 +58,7 @@ export default function PlanilhaTreino(){
                 time="1min"
                 weight="5Br"
             />
-            <Exercise
+            <ExerciseItem
                 Icon={MaterialIcons}
                 Iconname="panorama-fisheye"
                 train="Triceps Francês"
