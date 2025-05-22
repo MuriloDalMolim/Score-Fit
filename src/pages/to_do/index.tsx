@@ -1,0 +1,57 @@
+import React,{ useState } from "react";
+import{
+    View,
+    Text,
+    Image,
+} 
+from 'react-native';
+import { style } from "./styles";
+import { Upper } from "../../components/upper";
+import { Bottom } from "../../components/bottom";
+import {AntDesign, MaterialIcons,} from '@expo/vector-icons';
+import { Uptext } from "../../components/uptext";
+import { Schedule } from "../../components/schedule";
+
+export default function ToDo(){
+
+    return(
+        <>
+        <Upper
+            title="A Fazer"
+            Icon={AntDesign}
+            IconName="doubleleft"
+        />
+        <View style={style.mid}>
+            <Uptext
+                text="Dia da semana"
+                subtext="Editar"
+            />
+            <Schedule
+                Icon={MaterialIcons}
+                Iconname="panorama-fisheye"
+                act="Fazer marmita"
+                hour="10:00"
+            />
+            <Schedule
+                Icon={MaterialIcons}
+                Iconname="panorama-fisheye"
+                act="Almoço"
+                hour="12:00"
+            />
+            <Schedule
+                Icon={MaterialIcons}
+                Iconname="panorama-fisheye"
+                act="Treinar"
+                hour="14:00"
+            />
+            <Schedule
+                Icon={MaterialIcons}
+                Iconname="panorama-fisheye"
+                act="Café"
+                hour="6:30"
+            />
+        </View>
+        <Bottom/>
+        </>
+    )
+}
