@@ -1,7 +1,6 @@
 import React from "react";
 import{
     View,
-    Text,
     TextProps,
 } 
 from 'react-native';
@@ -12,7 +11,7 @@ type Props = TextProps&{
     title?: string
 }
 
-export const Bot_log_cad = ((Props:Props)=>{
+export const DarkBot = ((Props:Props)=>{
 
     const{title, ...rest} = Props
 

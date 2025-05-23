@@ -15,7 +15,7 @@ type Props = TextInputProps &{
     onChangeText?: (text: string) => void;
 }
 
-export const BigInput = ((Props:Props)=>{
+export const Input = ((Props:Props)=>{
 
     const{title,value,onChangeText,...rest}=Props;
 

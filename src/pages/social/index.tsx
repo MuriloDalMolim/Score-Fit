@@ -1,54 +1,50 @@
-import React,{ useState } from "react";
+import React from "react";
 import{
     View,
-    Text,
-    Image,
 } 
 from 'react-native';
 import { style } from "./styles";
-import { Upper } from "../../components/upper";
 import { Bottom } from "../../components/bottom";
-import {AntDesign, FontAwesome,} from '@expo/vector-icons';
-import { Uptext } from "../../components/uptext";
+import {AntDesign, FontAwesome, MaterialIcons, Ionicons} from '@expo/vector-icons';
 import { SocialItem } from "../../components/socialItem";
+import { SocialUpper } from "../../components/socialUpper";
+import { SocialUpText } from "../../components/socialUpperInput";
 
 export default function Social(){
 
     return(
         <>
-        <Upper
+        <SocialUpper
             title="Social"
             Icon={AntDesign}
             IconName="doubleleft"
+            IconAdd={Ionicons}
+            IconNameAdd="person-add"
         />
         <View style={style.mid}>
-            <Uptext
-                text="Dia da semana"
-                subtext="Editar"
+            <SocialUpText
+                
             />
             <SocialItem
+                name="Murilo"
                 Icon={FontAwesome}
                 Iconname="user-circle-o"
-                act="Fazer marmita"
-                hour="10:00"
+                IconFire={MaterialIcons}
+                IconNameFire="local-fire-department"
             />
             <SocialItem
+                name="Eduardo"
                 Icon={FontAwesome}
                 Iconname="user-circle-o"
-                act="Almoço"
-                hour="12:00"
+                IconFire={MaterialIcons}
+                IconNameFire="local-fire-department"
             />
             <SocialItem
+                name="Individuo"
                 Icon={FontAwesome}
                 Iconname="user-circle-o"
-                act="Treinar"
-                hour="14:00"
-            />
-            <SocialItem
-                Icon={FontAwesome}
-                Iconname="user-circle-o"
-                act="Café"
-                hour="6:30"
+                IconFire={MaterialIcons}
+                IconNameFire="local-fire-department"
             />
         </View>
         <Bottom/>

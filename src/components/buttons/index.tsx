@@ -1,23 +1,21 @@
 import React from "react";
 import{
-    View,
     Text,
     TouchableOpacity,
     TouchableOpacityProps,
-    ActivityIndicator
 } 
 from 'react-native';
 import { style } from "./styles";
 import {} from '@expo/vector-icons'
 
 type Props = TouchableOpacityProps &{
-    text?: string;
+    title?: string;
     loading?:boolean;
 }
 
 export function Buttons(Props:Props){
 
-    const{text,loading,...rest}=Props;
+    const{title,loading,...rest}=Props;
 
     return(
         <>
@@ -25,7 +23,7 @@ export function Buttons(Props:Props){
                 style={style.but}
                 activeOpacity={0.6}
                 {...rest} 
-            ><Text style={style.textbut}>{text}</Text>
+            ><Text style={style.textBut}>{title}</Text>
             </TouchableOpacity>
         </>
     );

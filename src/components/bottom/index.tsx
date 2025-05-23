@@ -1,10 +1,7 @@
 import React from "react";
 import{
     View,
-    Text,
     TextProps,
-    Image,
-    TextInput
 } 
 from 'react-native';
 import { style } from "./styles";

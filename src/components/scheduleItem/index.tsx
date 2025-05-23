@@ -38,11 +38,11 @@ export const ScheduleItem = ((Props:Props)=>{
                     />
                 </TouchableOpacity>
             )}
-            <View style={style.info}>
-                <View style={style.boxtrain}>
+            <View style={style.infos}>
+                <View style={style.boxTrain}>
                     <Text style={style.train}>{act}</Text>
                 </View>
-                <View style={style.boxatach}>
+                <View style={style.boxAtach}>
                     <Text style={style.atach}>{hour}</Text>
                 </View>
             </View>

@@ -3,7 +3,6 @@ import{
     View,
     Text,
     TextProps,
-    Touchable,
     TouchableOpacity
 } 
 from 'react-native';
@@ -21,9 +20,9 @@ export const Uptext = ((Props:Props)=>{
     return(
     <>
     <View style={style.range}>
-        <Text style={style.textone} >{text}</Text>
+        <Text style={style.textOne} >{text}</Text>
         <TouchableOpacity>
-            <Text style={style.texttwo} >{subtext}</Text>
+            <Text style={style.textTwo} >{subtext}</Text>
         </TouchableOpacity>    
     </View>    
     </>

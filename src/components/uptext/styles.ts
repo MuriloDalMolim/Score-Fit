@@ -10,12 +10,12 @@ export const style = StyleSheet.create({
         marginTop:30,
         marginBottom: 10
     },
-    textone:{
+    textOne:{
         fontSize:32,
         //fontWeight:'bold',
         color:themes.colors.bluefosco,
     },
-    texttwo:{
+    textTwo:{
         fontSize:24,
         color:themes.colors.bluefosco,
     }

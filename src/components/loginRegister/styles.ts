@@ -16,10 +16,10 @@ export const style = StyleSheet.create({
         color:'solid black', 
         margin:10
     },
-    line: {
-    width: '100%',
-    height: 3,
-    backgroundColor: 'black',
+    line:{
+        width: '100%',
+        height: 3,
+        backgroundColor: 'black',
   },
     
 })

@@ -30,7 +30,7 @@ export const ExerciseItem = ((Props:Props)=>{
 
     return(
     <>
-        <View style={marked ? style.itenmarked : style.iten}>
+        <View style={marked ? style.itenMarked : style.iten}>
             {Icon &&(
                 <TouchableOpacity onPress={() => setMarked(!marked)}>
                 <Icon
@@ -41,11 +41,11 @@ export const ExerciseItem = ((Props:Props)=>{
                     />
                 </TouchableOpacity>
             )}
-            <View style={style.info}>
-                <View style={style.boxtrain}>
+            <View style={style.infos}>
+                <View style={style.boxTrain}>
                     <Text style={style.train}>{train}</Text>
                 </View>
-                <View style={style.boxatach}>
+                <View style={style.boxAtach}>
                     <Text style={style.atach}>{series}</Text>
                     <Text style={style.atach}>{time}</Text>
                     <Text style={style.atach}>{weight}</Text>

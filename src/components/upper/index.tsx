@@ -2,9 +2,6 @@ import React from "react";
 import{
     View,
     Text,
-    TextProps,
-    Image,
-    TextInput,
     TouchableOpacity
 } 
 from 'react-native';
@@ -36,7 +33,7 @@ export const Upper = ((Props:Props)=>{
                 />
             </TouchableOpacity>
         )}
-        <Text style={style.uppertext}>{title}</Text>   
+        <Text style={style.upperText}>{title}</Text>   
     </View>
     </>
     )

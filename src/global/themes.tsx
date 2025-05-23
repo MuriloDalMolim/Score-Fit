@@ -6,6 +6,9 @@ export const themes = {
         dkgrayy: '#76909D',
         grayy: '#D8E9F0',
         bluefosco: '#46729A',
-        offiten: '#7B7B7B'
+        offiten: '#7B7B7B',
+        fire: '#F31010',
+        fired: '#5E4E4E'
+
     }
 }

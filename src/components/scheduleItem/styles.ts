@@ -26,7 +26,7 @@ export const style = StyleSheet.create({
         marginTop:'50%'
         
     },
-    info:{
+    infos:{
         marginLeft:'3%',
         marginRight:'2%',
         width:'85%',
@@ -35,15 +35,15 @@ export const style = StyleSheet.create({
         fontSize:28,
         color:'black'
     },
+    boxTrain:{
+        height:'50%',
+        width:'100%'
+    },
     atach:{
         fontSize:28,
         color:themes.colors.bluefosco,
     },
-    boxtrain:{
-        height:'50%',
-        width:'100%'
-    },
-    boxatach:{
+    boxAtach:{
         justifyContent:"space-between",
         flexDirection:'row',
         height:'50%',

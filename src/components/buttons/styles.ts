@@ -11,7 +11,7 @@ export const style = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center'
     },
-    textbut:{
+    textBut:{
         color:'#FFFF',
         fontWeight:'bold',
         fontSize:24

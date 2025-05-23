@@ -8,18 +8,26 @@ export const style = StyleSheet.create({
         height:Dimensions.get('window').height/5.5,
         flexDirection:'row',
         alignItems:'center',
+        paddingHorizontal: 20,
+        justifyContent: 'space-between',
     },
     upperText:{
         fontWeight:'bold',
         fontSize:30,
         color: '#FFFF',
-        marginLeft: 15, 
-        justifyContent:'flex-end',   
+        marginLeft: 15,  
         marginTop:50,
     },
     icon:{
         marginTop:50,
         marginLeft: 15, 
+    },
+    iconAdd:{
+        marginTop:50,
+    },
+    leftUpper:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginLeft:'-5%'
     }
-    
 })

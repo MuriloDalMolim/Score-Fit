@@ -4,7 +4,6 @@ import{
     Text,
     TextProps,
     Image,
-    TextInput
 } 
 from 'react-native';
 import { style } from "./styles";
@@ -15,7 +14,7 @@ type Props = TextProps&{
     title?: string
 }
 
-export const Upper_log_cad = ((Props:Props)=>{
+export const BigUpper = ((Props:Props)=>{
     const{title, ...rest} = Props
 
     return(
@@ -26,7 +25,7 @@ export const Upper_log_cad = ((Props:Props)=>{
                 source={WhiteLogo}
                 resizeMode="contain"
             />
-            <Text style={style.logotext}>NOME APP</Text>
+            <Text style={style.logoText}>NOME APP</Text>
     </View>
     </>
     )

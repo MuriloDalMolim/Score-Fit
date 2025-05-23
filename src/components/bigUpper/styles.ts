@@ -16,7 +16,7 @@ export const style = StyleSheet.create({
         marginTop:'-5%',   
         marginBottom:'-5%'
     },
-    logotext:{
+    logoText:{
         fontStyle: 'italic',
         fontWeight:'bold',
         fontSize:45,

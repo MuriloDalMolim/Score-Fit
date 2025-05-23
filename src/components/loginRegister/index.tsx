@@ -11,7 +11,7 @@ import {} from '@expo/vector-icons'
 type Props = TextProps&{
     title?: string
 }
-export const Function_log_cad = ((Props:Props)=>{
+export const LoginRegister = ((Props:Props)=>{
 
 const {title,...rest } = Props;
 
