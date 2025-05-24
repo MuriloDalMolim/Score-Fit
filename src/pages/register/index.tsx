@@ -2,6 +2,7 @@ import React,{ useState } from "react";
 import{
     View,
     Text,
+    TouchableOpacity,
 } 
 from 'react-native';
 import { style } from "./styles";
@@ -22,7 +23,6 @@ export default function Register(){
         <>
         <BigUpper/>
         <View style={style.mid}>
-            
             <LoginRegister
                 title="CADASTRO"
             />
@@ -47,7 +47,9 @@ export default function Register(){
                 title="CADASTRAR"
             />
             <Text style={style.little}>Já possui uma conta?</Text>
-            <Text style={style.big}>Faça login aqui!</Text>
+            <TouchableOpacity>
+                <Text style={style.big}>Faça login aqui!</Text>
+            </TouchableOpacity>
         </View>
         <DarkBot
         />       

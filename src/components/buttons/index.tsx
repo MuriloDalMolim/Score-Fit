@@ -6,7 +6,6 @@ import{
 } 
 from 'react-native';
 import { style } from "./styles";
-import {} from '@expo/vector-icons'
 
 type Props = TouchableOpacityProps &{
     title?: string;

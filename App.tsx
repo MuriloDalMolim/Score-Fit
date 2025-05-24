@@ -10,9 +10,9 @@ export default function App() {
   return (
     //<Login/>
     //<Register/> 
-    //<PlanilhaTreino/>
+    <PlanilhaTreino/>
     //<ToDo/>
-    <Social/>
+    //<Social/>
   );
 }
 

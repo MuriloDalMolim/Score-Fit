@@ -7,7 +7,11 @@ export const style = StyleSheet.create({
         backgroundColor:themes.colors.ciano,
         height:Dimensions.get('window').height/6.5,
         alignItems:'center',
-        justifyContent:'center',
+        justifyContent:'space-around',
+        flexDirection:'row'
+    },
+    icon:{
+        marginBottom:30
     }
     
 })

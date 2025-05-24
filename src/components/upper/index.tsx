@@ -6,7 +6,6 @@ import{
 } 
 from 'react-native';
 import { style } from "./styles";
-import {} from '@expo/vector-icons'
 import {AntDesign} from '@expo/vector-icons';
 
 type IconComponent = React.ComponentType<React.ComponentProps<typeof AntDesign>>;

@@ -2,6 +2,7 @@ import React,{ useState } from "react";
 import{
     View,
     Text,
+    TouchableOpacity,
 } 
 from 'react-native';
 import { style } from "./styles";
@@ -41,9 +42,11 @@ export default function Login(){
                 title="Entrar"
             />
             <Text style={style.little}>Ainda não possui uma conta?</Text>
-            <Text style={style.big}>Cadastre-se aqui!</Text>
+            <TouchableOpacity>
+                <Text style={style.big}>Cadastre-se aqui!</Text>
+            </TouchableOpacity>
         </View>
-        <DarkBot/>   
+        <DarkBot/>
         </>
     )
 }

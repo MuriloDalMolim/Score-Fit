@@ -6,7 +6,7 @@ from 'react-native';
 import { style } from "./styles";
 import { Upper } from "../../components/upper";
 import { Bottom } from "../../components/bottom";
-import {AntDesign, MaterialIcons,} from '@expo/vector-icons';
+import {AntDesign, MaterialIcons,FontAwesome,FontAwesome6,Octicons} from '@expo/vector-icons';
 import { Uptext } from "../../components/uptext";
 import { ExerciseItem } from "../../components/exerciseItem";
 
@@ -65,7 +65,14 @@ export default function PlanilhaTreino(){
                 weight="12kg"
             />
         </View>
-        <Bottom/>
+        <Bottom
+            List={Octicons}
+            listName="checklist"
+            Dumbbell={FontAwesome6}
+            dumbellName="dumbbell"
+            User={FontAwesome}
+            userName="user-circle-o"
+        />
         </>
     )
 }

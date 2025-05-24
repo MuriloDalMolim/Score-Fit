@@ -7,7 +7,7 @@ export const style = StyleSheet.create({
         marginBottom: 0,
         marginTop: 20,
         marginLeft: 10,
-        color:themes.colors.dkgrayy
+        color:themes.colors.darkblue
     },
     input:{
         backgroundColor:themes.colors.grayy,

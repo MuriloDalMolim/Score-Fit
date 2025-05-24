@@ -1,1 +1,6 @@
 MaterialIcons - add-box (AddFriends)
+
+
+FontAwesome user - circle-o
+FontAwesome6 - dumbbell
+Octicons - checklist
