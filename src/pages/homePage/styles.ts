@@ -81,7 +81,7 @@ export const style = StyleSheet.create({
     streak:{
         fontSize:65,
         fontWeight:'bold',
-        color:'white'
+        color:themes.colors.lightbluu
     }
 
 

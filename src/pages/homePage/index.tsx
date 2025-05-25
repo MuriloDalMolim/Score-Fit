@@ -22,11 +22,11 @@ export default function HomePage(){
                 </Text>
             </View>   
             <TouchableOpacity style={style.user}>       
-                    <FontAwesome 
-                        name="user" 
-                        size={80} 
-                        color="white" 
-                    />
+                <FontAwesome 
+                    name="user" 
+                    size={80} 
+                    color="white" 
+                />
             </TouchableOpacity>
         </View>
 

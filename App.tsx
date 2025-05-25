@@ -6,15 +6,19 @@ import PlanilhaTreino from './src/pages/planilhatreino';
 import ToDo from './src/pages/to_do';
 import Social from './src/pages/social';
 import HomePage from './src/pages/homePage';
+import ConfigPage from './src/pages/configPage';
+import PerfilEdit from './src/pages/perfilEdit';
 
 export default function App() {
   return (
-    //<Login/>
+    <Login/>
     //<Register/> 
     //<PlanilhaTreino/>
     //<ToDo/>
     //<Social/>
-    <HomePage/>
+    //<HomePage/>
+    //<ConfigPage/>
+    //<PerfilEdit/>
   );
 }
 

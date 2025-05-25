@@ -1,0 +1,12 @@
+import { Dimensions, StyleSheet} from "react-native";
+import { themes } from "../../global/themes";
+
+export const style = StyleSheet.create({
+    mid:{
+        height:Dimensions.get('window').height/1.28,
+        width:'100%',
+        alignItems:'center',
+        backgroundColor:themes.colors.backgroud
+    }
+
+})
