@@ -5,7 +5,7 @@ import{
 from 'react-native';
 import { style } from "./styles";
 import { Bottom } from "../../components/bottom";
-import {AntDesign, FontAwesome, MaterialIcons, Ionicons} from '@expo/vector-icons';
+import {AntDesign, FontAwesome, MaterialIcons, Ionicons, FontAwesome6, Octicons} from '@expo/vector-icons';
 import { SocialItem } from "../../components/socialItem";
 import { SocialUpper } from "../../components/socialUpper";
 import { SocialUpText } from "../../components/socialUpperInput";
@@ -47,7 +47,14 @@ export default function Social(){
                 IconNameFire="local-fire-department"
             />
         </View>
-        <Bottom/>
+        <Bottom
+            List={Octicons}
+            listName="checklist"
+            Dumbbell={FontAwesome6}
+            dumbellName="dumbbell"
+            User={FontAwesome}
+            userName="user-circle-o"
+        />
         </>
     )
 }

@@ -6,7 +6,7 @@ from 'react-native';
 import { style } from "./styles";
 import { Upper } from "../../components/upper";
 import { Bottom } from "../../components/bottom";
-import {AntDesign, MaterialIcons,} from '@expo/vector-icons';
+import {AntDesign, MaterialIcons, FontAwesome, FontAwesome6, Octicons} from '@expo/vector-icons';
 import { Uptext } from "../../components/uptext";
 import { ScheduleItem } from "../../components/scheduleItem";
 
@@ -49,7 +49,14 @@ export default function ToDo(){
                 hour="6:30"
             />
         </View>
-        <Bottom/>
+        <Bottom
+            List={Octicons}
+            listName="checklist"
+            Dumbbell={FontAwesome6}
+            dumbellName="dumbbell"
+            User={FontAwesome}
+            userName="user-circle-o"
+        />
         </>
     )
 }

@@ -8,7 +8,8 @@ export const themes = {
         bluefosco: '#46729A',
         offiten: '#7B7B7B',
         fire: '#F31010',
-        fired: '#5E4E4E'
+        fired: '#5E4E4E',
+        lightbluu: '#2894C5'
 
     }
 }

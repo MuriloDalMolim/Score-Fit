@@ -5,14 +5,16 @@ import Register from './src/pages/register';
 import PlanilhaTreino from './src/pages/planilhatreino';
 import ToDo from './src/pages/to_do';
 import Social from './src/pages/social';
+import HomePage from './src/pages/homePage';
 
 export default function App() {
   return (
     //<Login/>
     //<Register/> 
-    <PlanilhaTreino/>
+    //<PlanilhaTreino/>
     //<ToDo/>
     //<Social/>
+    <HomePage/>
   );
 }
 

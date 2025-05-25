@@ -8,7 +8,7 @@ import{
 from 'react-native';
 import { style } from "./styles";
 import {} from '@expo/vector-icons'
-import WhiteLogo from "../../assets/WhileLogo.png"
+import WhiteLogo from "../../assets/WhiteLogo.png"
 
 type Props = TextProps&{
     title?: string
