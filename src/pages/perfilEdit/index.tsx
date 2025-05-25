@@ -11,8 +11,15 @@ import { DarkBot } from "../../components/darkBot";
 import { Input } from "../../components/Input";
 import { Buttons } from "../../components/buttons";
 import { Upper } from "../../components/upper";
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../@types/navigation'
+
+type NavigationProps = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 export default function PerfilEdit(){
+
+    const navigation = useNavigation<NavigationProps>();
 
     return(
         <>
@@ -20,6 +27,7 @@ export default function PerfilEdit(){
             title="Editar Perfil"
             Icon={AntDesign}
             IconName="doubleleft"
+            onPress={() => navigation.navigate('ConfigPage')}
         />
         <View style={style.mid}>
             <TouchableOpacity style={style.user}>       

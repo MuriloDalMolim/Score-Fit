@@ -12,12 +12,18 @@ import { DarkBot } from "../../components/darkBot";
 import {LoginRegister} from "../../components/loginRegister"
 import { Input } from "../../components/Input";
 import { Buttons } from "../../components/buttons";
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../@types/navigation'
+
+type NavigationProps = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 export default function Register(){
 
     const [email,setEmail] = useState('Murilo@gmail.com')
     const [name,setName] = useState('Murilo')
     const [password,setPassword] = useState('123');
+    const navigation = useNavigation<NavigationProps>();
 
     return(
         <>
@@ -45,10 +51,13 @@ export default function Register(){
             />
             <Buttons
                 title="CADASTRAR"
+                onPress={() => navigation.navigate('Login')}
             />
             <Text style={style.little}>Já possui uma conta?</Text>
             <TouchableOpacity>
-                <Text style={style.big}>Faça login aqui!</Text>
+                <Text style={style.big}
+                    onPress={() => navigation.navigate('Login')}
+                >Faça login aqui!</Text>
             </TouchableOpacity>
         </View>
         <DarkBot

@@ -9,8 +9,15 @@ import { Bottom } from "../../components/bottom";
 import {AntDesign, MaterialIcons, FontAwesome, FontAwesome6, Octicons} from '@expo/vector-icons';
 import { Uptext } from "../../components/uptext";
 import { ScheduleItem } from "../../components/scheduleItem";
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../@types/navigation'
+
+type NavigationProps = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 export default function ToDo(){
+
+    const navigation = useNavigation<NavigationProps>();
 
     return(
         <>
@@ -18,6 +25,7 @@ export default function ToDo(){
             title="A Fazer"
             Icon={AntDesign}
             IconName="doubleleft"
+            onPress={() => navigation.navigate('HomePage')}
         />
         <View style={style.mid}>
             <Uptext

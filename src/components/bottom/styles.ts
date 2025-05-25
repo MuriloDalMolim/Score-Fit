@@ -11,7 +11,8 @@ export const style = StyleSheet.create({
         flexDirection:'row'
     },
     icon:{
-        marginBottom:30
+        marginBottom:30,
+        backgroundColor:'red'
     }
     
 })

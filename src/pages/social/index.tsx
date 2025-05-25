@@ -9,8 +9,15 @@ import {AntDesign, FontAwesome, MaterialIcons, Ionicons, FontAwesome6, Octicons}
 import { SocialItem } from "../../components/socialItem";
 import { SocialUpper } from "../../components/socialUpper";
 import { SocialUpText } from "../../components/socialUpperInput";
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../@types/navigation'
+
+type NavigationProps = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 export default function Social(){
+
+    const navigation = useNavigation<NavigationProps>();
 
     return(
         <>
@@ -20,6 +27,7 @@ export default function Social(){
             IconName="doubleleft"
             IconAdd={Ionicons}
             IconNameAdd="person-add"
+            onPress={() => navigation.navigate('HomePage')}
         />
         <View style={style.mid}>
             <SocialUpText

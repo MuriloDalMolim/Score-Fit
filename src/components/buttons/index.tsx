@@ -7,6 +7,7 @@ import{
 from 'react-native';
 import { style } from "./styles";
 
+
 type Props = TouchableOpacityProps &{
     title?: string;
     loading?:boolean;

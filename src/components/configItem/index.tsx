@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import{
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    TouchableOpacityProps
 } 
 from 'react-native';
 import { style } from "./styles";
@@ -12,7 +13,7 @@ type IconComponent = React.ComponentType<React.ComponentProps<typeof FontAwesome
                     React.ComponentType<React.ComponentProps<typeof MaterialIcons>> |
                     React.ComponentType<React.ComponentProps<typeof Ionicons>>;
 
-type Props = {
+type Props = TouchableOpacityProps &{
     Icon?: IconComponent,
     IconName?: string,
     title?: string,
@@ -24,7 +25,7 @@ export const ConfigItem = ((Props:Props)=>{
 
     return(
     <>
-        <TouchableOpacity style={style.iten}>
+        <TouchableOpacity style={style.iten} {...rest}>
             {Icon &&(
                 <Icon
                     style={style.icon}
@@ -33,7 +34,7 @@ export const ConfigItem = ((Props:Props)=>{
                     color={'black'}
                 />
             )}
-            <Text style={style.configText}>{title}</Text>
+            <Text style={style.configText} {...rest}>{title}</Text>
         </TouchableOpacity>
     </>
     )

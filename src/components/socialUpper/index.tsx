@@ -2,7 +2,8 @@ import React from "react";
 import{
     View,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    TouchableOpacityProps
 } 
 from 'react-native';
 import { style } from "./styles";
@@ -12,7 +13,7 @@ import {AntDesign, Ionicons} from '@expo/vector-icons';
 type IconComponent = React.ComponentType<React.ComponentProps<typeof AntDesign>> | 
                      React.ComponentType<React.ComponentProps<typeof Ionicons>>;
 
-type Props={
+type Props= TouchableOpacityProps &{
     Icon?:IconComponent,
     IconName?: string,
     IconAdd?:IconComponent
@@ -28,7 +29,7 @@ export const SocialUpper = ((Props:Props)=>{
     <View style={style.upper}>
         <View style={style.leftUpper}>
             {Icon && IconName && (
-                <TouchableOpacity>
+                <TouchableOpacity {...rest}>
                     <Icon
                         style={style.icon}
                         name={IconName as any}
