@@ -9,7 +9,8 @@ export const themes = {
         offiten: '#7B7B7B',
         fire: '#F31010',
         fired: '#5E4E4E',
-        lightbluu: '#2894C5'
+        lightbluu: '#2894C5',
+        selected:'#4F90B1'
 
     }
 }

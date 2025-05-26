@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import{
     View,
 } 
 from 'react-native';
-import { style } from "./styles";
+import { style } from "./styles"
 import { Upper } from "../../components/upper";
 import { Bottom } from "../../components/bottom";
 import {AntDesign, MaterialIcons,FontAwesome,FontAwesome6,Octicons} from '@expo/vector-icons';
@@ -12,12 +12,15 @@ import { ExerciseItem } from "../../components/exerciseItem";
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../@types/navigation'
+import { TrainModal } from '../../components/trainModal';
 
 type NavigationProps = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 export default function PlanilhaTreino(){
 
     const navigation = useNavigation<NavigationProps>();
+    const [modalVisible, setModalVisible] = useState(false);
+    const workouts = ['Treino A', 'Treino B', 'Treino C'];
 
     return(
         <>
@@ -31,6 +34,12 @@ export default function PlanilhaTreino(){
             <Uptext
                 text="Treino X"
                 subtext="Gerenciar"
+                onPressSub={() => setModalVisible(true)}
+            />
+            <TrainModal
+                visible={modalVisible}
+                onClose={() => setModalVisible(false)}
+                workouts={workouts}
             />
             <ExerciseItem
                 Icon={MaterialIcons}
@@ -76,10 +85,13 @@ export default function PlanilhaTreino(){
         <Bottom
             List={Octicons}
             listName="checklist"
-            Dumbbell={FontAwesome6}
-            dumbellName="dumbbell"
+            DumbbellMark={FontAwesome6}
+            dumbellNameMark="dumbbell"
             User={FontAwesome}
             userName="user-circle-o"
+            onPressList={() => navigation.navigate('ToDo')}
+            onPressDumbbell={() => navigation.navigate('PlanilhaTreino')}
+            onPressUser={() => navigation.navigate('Social')}
         />
         </>
     )

@@ -24,7 +24,6 @@ export default function Login(){
     const [password,setPassword] = useState('123');
     const navigation = useNavigation<NavigationProps>();
 
-
     return(
         <>
         <BigUpper/>

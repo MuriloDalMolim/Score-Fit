@@ -25,7 +25,7 @@ export const BigUpper = ((Props:Props)=>{
                 source={WhiteLogo}
                 resizeMode="contain"
             />
-            <Text style={style.logoText}>NOME APP</Text>
+            <Text style={style.logoText}>ScoreFit</Text>
     </View>
     </>
     )

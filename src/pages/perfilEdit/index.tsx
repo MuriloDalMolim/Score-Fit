@@ -30,18 +30,20 @@ export default function PerfilEdit(){
             onPress={() => navigation.navigate('ConfigPage')}
         />
         <View style={style.mid}>
-            <TouchableOpacity style={style.user}>       
+            <View style={style.user}>       
                 <FontAwesome 
                     name="user" 
                     size={170} 
                     color="white" 
                 />
-            </TouchableOpacity>
+            </View>
             <Input
                 title="Nome Completo:"
+                value="name"
             />
             <Input
                 title="E-Mail:"
+                value="email"
             />
             <Buttons
                 title="Salvar"

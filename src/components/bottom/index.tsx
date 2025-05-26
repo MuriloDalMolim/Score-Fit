@@ -18,39 +18,78 @@ type Props ={
     dumbellName?: string
     User?: IconComponent
     userName?: string
+    ListMark?: IconComponent
+    listNameMark?: string
+    DumbbellMark?: IconComponent
+    dumbellNameMark?: string
+    UserMark?: IconComponent
+    userNameMark?: string
+    onPressList: () => void;
+    onPressDumbbell: () => void;
+    onPressUser: () => void;
 }
 
 export const Bottom = ((Props:Props)=>{
-    const{List,listName,Dumbbell,dumbellName,User,userName,...rest} = Props
+    const{onPressList, onPressDumbbell,onPressUser,List,listName,Dumbbell,dumbellName,User,userName,ListMark,listNameMark,DumbbellMark,dumbellNameMark,UserMark,userNameMark,...rest} = Props
 
     return(
     <>
     <View style={style.bottom}>
         {List && listName && (
-            <TouchableOpacity>
+            <TouchableOpacity style={style.unMark} onPress={onPressList}>
                 <List
-                    style={style.icon}
                     name={listName as any}
                     size={50}
                     color={'white'}
                 />
             </TouchableOpacity>
         )}
+        {ListMark && listNameMark && (
+            <TouchableOpacity style={style.mark}>
+                <ListMark
+                    name={listNameMark as any}
+                    size={50}
+                    color={'white'}
+                />
+            </TouchableOpacity>
+        )}
+
+
+
         {Dumbbell && dumbellName && (
-            <TouchableOpacity>
+            <TouchableOpacity style={style.unMark} onPress={onPressDumbbell}>
                 <Dumbbell
-                    style={style.icon}
                     name={dumbellName as any}
                     size={50}
                     color={'white'}
                 />
             </TouchableOpacity>
         )}
+        {DumbbellMark && dumbellNameMark && (
+            <TouchableOpacity style={style.mark}>
+                <DumbbellMark
+                    name={dumbellNameMark as any}
+                    size={50}
+                    color={'white'}
+                />
+            </TouchableOpacity>
+        )}
+
+
+
         {User && userName && (
-            <TouchableOpacity>
+            <TouchableOpacity style={style.unMark} onPress={onPressUser}>
                 <User
-                    style={style.icon}
                     name={userName as any}
+                    size={50}
+                    color={'white'}
+                />
+            </TouchableOpacity>
+        )}
+        {UserMark && userNameMark && (
+            <TouchableOpacity style={style.mark}>
+                <UserMark
+                    name={userNameMark as any}
                     size={50}
                     color={'white'}
                 />

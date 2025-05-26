@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import{
     View,
 } 
@@ -12,12 +12,15 @@ import { SocialUpText } from "../../components/socialUpperInput";
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../@types/navigation'
+import { SocialModal } from "../../components/socialModal";
 
 type NavigationProps = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 export default function Social(){
 
     const navigation = useNavigation<NavigationProps>();
+    const [modalVisible, setModalVisible] = useState(false);
+    const names = ['Marcos','Luiz']
 
     return(
         <>
@@ -28,6 +31,12 @@ export default function Social(){
             IconAdd={Ionicons}
             IconNameAdd="person-add"
             onPress={() => navigation.navigate('HomePage')}
+            onPressSub={() => setModalVisible(true)}
+        />
+        <SocialModal
+            visible={modalVisible}
+            onClose={() => setModalVisible(false)}
+            names={names}
         />
         <View style={style.mid}>
             <SocialUpText
@@ -60,8 +69,11 @@ export default function Social(){
             listName="checklist"
             Dumbbell={FontAwesome6}
             dumbellName="dumbbell"
-            User={FontAwesome}
-            userName="user-circle-o"
+            UserMark={FontAwesome}
+            userNameMark="user-circle-o"
+            onPressList={() => navigation.navigate('ToDo')}
+            onPressDumbbell={() => navigation.navigate('PlanilhaTreino')}
+            onPressUser={() => navigation.navigate('Social')}
         />
         </>
     )

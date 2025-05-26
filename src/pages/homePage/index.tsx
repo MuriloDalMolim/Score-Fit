@@ -43,10 +43,10 @@ export default function HomePage(){
                 source={WhiteLogo}
                 resizeMode="contain"
             />
-            <Text style={style.logoTitle}>NOME APP</Text>
+            <Text style={style.logoTitle}>ScoreFit</Text>
 
             <View style={style.row}>
-                <TouchableOpacity style={style.square}>
+                <View style={style.square}>
                     <View style={style.fireContainer}>
                         <Text style={style.streak}>7</Text>
                         <MaterialIcons
@@ -57,7 +57,7 @@ export default function HomePage(){
                         />
                     </View>
                     <Text style={style.squareText}>Streak</Text>
-                </TouchableOpacity>
+                </View>
                 <TouchableOpacity style={style.square} onPress={() => navigation.navigate('PlanilhaTreino')}>
                     <FontAwesome6
                         style={style.icon}

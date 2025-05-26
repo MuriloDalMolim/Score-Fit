@@ -7,7 +7,7 @@ import HomePage from '../pages/homePage';
 import { RootStackParamList } from '../@types/navigation'; 
 import ConfigPage from '../pages/configPage';
 import PerfilEdit from '../pages/perfilEdit';
-import PlanilhaTreino from '../pages/planilhatreino';
+import PlanilhaTreino from '../pages/planilhaTreino';
 import Social from '../pages/social';
 import ToDo from '../pages/toDo';
 

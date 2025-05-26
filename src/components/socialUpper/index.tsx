@@ -19,10 +19,11 @@ type Props= TouchableOpacityProps &{
     IconAdd?:IconComponent
     IconNameAdd?: string,
     title?: string
+    onPressSub?: () => void
 }
 
 export const SocialUpper = ((Props:Props)=>{
-    const{title,Icon,IconName,IconAdd,IconNameAdd, ...rest} = Props
+    const{onPressSub,title,Icon,IconName,IconAdd,IconNameAdd, ...rest} = Props
 
     return(
     <>
@@ -41,7 +42,7 @@ export const SocialUpper = ((Props:Props)=>{
             <Text style={style.upperText}>{title}</Text>   
         </View>
         {IconAdd && IconNameAdd && (
-            <TouchableOpacity>
+            <TouchableOpacity onPress={onPressSub}>
                 <IconAdd
                     style={style.iconAdd}
                     name={IconNameAdd as any}

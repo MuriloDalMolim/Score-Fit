@@ -5,14 +5,25 @@ export const style = StyleSheet.create({
     bottom:{
         width:'100%',
         backgroundColor:themes.colors.ciano,
-        height:Dimensions.get('window').height/6.5,
+        height:Dimensions.get('window').height/8.4,
         alignItems:'center',
         justifyContent:'space-around',
         flexDirection:'row'
     },
-    icon:{
-        marginBottom:30,
-        backgroundColor:'red'
+    mark:{
+        backgroundColor:themes.colors.selected,
+        borderRadius:30,
+        width:'30%',
+        height:'100%',
+        justifyContent:'center',
+        alignItems:'center',
+    },
+    unMark:{
+        width:'30%',
+        height:'100%',
+        justifyContent:'center',
+        alignItems:'center',
+        borderRadius:30,
     }
     
 })
