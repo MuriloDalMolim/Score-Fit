@@ -40,8 +40,10 @@ export const style = StyleSheet.create({
         width:'100%'
     },
     atach:{
-        fontSize:28,
+        fontSize:26,
+        fontWeight:'400',
         color:themes.colors.bluefosco,
+        maxWidth:'50%'
     },
     boxAtach:{
         justifyContent:"space-between",

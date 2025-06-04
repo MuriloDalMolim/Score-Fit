@@ -22,7 +22,7 @@ type Props = TextProps &{
     hour?: string
 }
 
-export const ExerciseItem = ((Props:Props)=>{
+export const TrainItem = ((Props:Props)=>{
     const{Icon,Iconname,train,series,time,weight,hour,...rest} = Props
     const [marked, setMarked] = useState(false);
 

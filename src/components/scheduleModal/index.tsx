@@ -6,8 +6,10 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native';
-import { FontAwesome} from '@expo/vector-icons';
+import { FontAwesome,AntDesign} from '@expo/vector-icons';
 import { style } from './styles';
+
+type IconComponent = React.ComponentType<React.ComponentProps<typeof AntDesign>>
 
 type Activity = {
   name: string;
@@ -18,9 +20,13 @@ type Props = {
   visible: boolean;
   onClose: () => void;
   activities: Activity[];
+  Icon?: IconComponent;
+  iconName?: String;
+  IconRg?: IconComponent;
+  iconNameRg?: String;
 };
 
-export const ScheduleModal = ({ visible, onClose, activities }:Props)=>{
+export const ScheduleModal = ({Icon, iconName,IconRg, iconNameRg, visible, onClose, activities }:Props)=>{
   return(
     <Modal
       transparent
@@ -32,7 +38,23 @@ export const ScheduleModal = ({ visible, onClose, activities }:Props)=>{
         <View style={style.modalContainer}>
           <View style={style.upper}>
             <Text style={style.upperText}>Gerenciar Rotina</Text>
-            <Text style={style.upperText}> Segunda feira </Text>
+            <View style={style.leftRight}>
+              <TouchableOpacity>
+                <Icon
+                  name={iconName as any}
+                  size={50}
+                  color={'white'}
+                />
+              </TouchableOpacity>
+              <Text style={style.upperText}> Segunda feira </Text>
+              <TouchableOpacity>
+                <IconRg
+                  name={iconNameRg as any}
+                  size={50}
+                  color={'white'}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
 
           <FlatList

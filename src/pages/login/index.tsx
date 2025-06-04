@@ -1,3 +1,5 @@
+import {firebase} from "../../services/firebase.js"
+
 import React,{ useState } from "react";
 import{
     View,
@@ -46,7 +48,14 @@ export default function Login(){
             />
             <Buttons
                 title="Entrar"
-                onPress={() => navigation.navigate('HomePage')}
+                onPress={async() => {
+                    try{
+                        await firebase.auth().signInWithEmailAndPassword(email, password);
+                        navigation.navigate('HomePage');
+                    } catch(error: any){
+                    alert('Erro ao fazer login '+ error.mensage);
+                    }
+                }}
             />
             <Text style={style.little}>Ainda não possui uma conta?</Text>
             <TouchableOpacity>

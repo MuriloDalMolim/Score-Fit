@@ -11,6 +11,5 @@ export const themes = {
         fired: '#5E4E4E',
         lightbluu: '#2894C5',
         selected:'#4F90B1'
-
     }
 }

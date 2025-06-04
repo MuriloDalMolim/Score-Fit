@@ -14,6 +14,8 @@ export const style = StyleSheet.create({
     backgroundColor:themes.colors.backgroud,
     borderRadius:10,
     paddingBottom:16,
+    maxHeight: '85%',
+    alignSelf: 'center',
   },
   upper:{
     backgroundColor:themes.colors.darkblue,

@@ -7,12 +7,12 @@ export const style = StyleSheet.create({
         flexDirection:'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginTop:30,
-        marginBottom: 10
+        marginTop:10,
+        marginBottom: 10,
+        paddingTop: 20
     },
     textOne:{
-        fontSize:32,
-        //fontWeight:'bold',
+        fontSize:30,
         color:themes.colors.bluefosco,
     },
     textTwo:{

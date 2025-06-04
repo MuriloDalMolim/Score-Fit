@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import{
     View,
 } 
@@ -8,11 +8,14 @@ import { Upper } from "../../components/upper";
 import { Bottom } from "../../components/bottom";
 import {AntDesign, MaterialIcons,FontAwesome,FontAwesome6,Octicons} from '@expo/vector-icons';
 import { Uptext } from "../../components/uptext";
-import { ExerciseItem } from "../../components/exerciseItem";
+import { TrainItem } from "../../components/trainItem";
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../@types/navigation'
 import { TrainModal } from '../../components/trainModal';
+import {firebase} from '../../services/firebase'
+import { Treino } from "../../@types/treino";
+import { TrainSelectModal } from "../../components/trainSelectModal";
 
 type NavigationProps = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
@@ -20,8 +23,45 @@ export default function PlanilhaTreino(){
 
     const navigation = useNavigation<NavigationProps>();
     const [modalVisible, setModalVisible] = useState(false);
-    const workouts = ['Treino A', 'Treino B', 'Treino C'];
+    const [selectModalVisible, setSelectModalVisible] = useState(false);
+    const [workouts, setWorkouts] = useState<Treino[]>([]);
+    const userId = firebase.auth().currentUser?.uid;
+    const [treinoSelecionado, setTreinoSelecionado] = useState<Treino | null>(null);
 
+
+    useEffect(() => {
+        if (!userId) return;
+
+        const unsubscribe = firebase.firestore()
+            .collection('users')
+            .doc(userId)
+            .collection('workouts')
+            .onSnapshot(snapshot => {
+        const treinos = snapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+        })) as Treino[];
+        setWorkouts(treinos);
+
+        if (!treinoSelecionado && treinos.length > 0) {
+            setTreinoSelecionado(treinos[0]);
+        }
+
+        });
+
+    return () => unsubscribe();
+    }, [userId]);
+
+
+    const salvarTreino = async (novoTreino: Omit<Treino, 'id'>) => {
+        await firebase.firestore()
+        .collection('users')
+        .doc(userId)
+        .collection('workouts')
+        .add(novoTreino);
+    };
+
+    
     return(
         <>
         <Upper
@@ -32,56 +72,39 @@ export default function PlanilhaTreino(){
         />
         <View style={style.mid}>
             <Uptext
-                text="Treino X"
+                text={treinoSelecionado?.nome || 'Selecionar treino'}
                 subtext="Gerenciar"
+                onPress={() => setSelectModalVisible(true)}
                 onPressSub={() => setModalVisible(true)}
             />
             <TrainModal
                 visible={modalVisible}
                 onClose={() => setModalVisible(false)}
                 workouts={workouts}
+                setWorkouts={setWorkouts}
+                onSalvarTreino={salvarTreino}
             />
-            <ExerciseItem
+            <TrainSelectModal
+                visible={selectModalVisible}
+                onClose={() => setSelectModalVisible(false)}
+                treinos={workouts}
+                onSelecionarTreino={(treino) => {
+                    console.log('Treino selecionado:', treino.nome); // ✅ pode remover depois
+                    setTreinoSelecionado(treino);
+                }}
+            />
+            {treinoSelecionado?.exercicios.map((ex) => (
+            <TrainItem
+                key={ex.id}
                 Icon={MaterialIcons}
                 Iconname="panorama-fisheye"
-                train="Supino inclinado c/ halter"
-                series="4x12"
-                time="2min"
-                weight="18kg"
+                train={ex.nome}
+                series={ex.series}
+                time={ex.descanso}
+                weight={ex.carga}
             />
-            <ExerciseItem
-                Icon={MaterialIcons}
-                Iconname="panorama-fisheye"
-                train="Voador"
-                series="4x12"
-                time="2min"
-                weight="6Br"
-            />
-            <ExerciseItem
-                Icon={MaterialIcons}
-                Iconname="panorama-fisheye"
-                train="Supino Declinado"
-                series="4x12"
-                time="3min"
-                weight="25kg"
-            />
-            <ExerciseItem
-                Icon={MaterialIcons}
-                Iconname="panorama-fisheye"
-                train="Triceps Corda"
-                series="3X15"
-                time="1min"
-                weight="5Br"
-            />
-            <ExerciseItem
-                Icon={MaterialIcons}
-                Iconname="panorama-fisheye"
-                train="Triceps Francês"
-                series="3X15"
-                time="1,5min"
-                weight="12kg"
-            />
-        </View>
+            ))}
+      </View>
         <Bottom
             List={Octicons}
             listName="checklist"
@@ -94,5 +117,5 @@ export default function PlanilhaTreino(){
             onPressUser={() => navigation.navigate('Social')}
         />
         </>
-    )
+    );
 }

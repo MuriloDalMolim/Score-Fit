@@ -1,3 +1,5 @@
+import {firebase} from "../../services/firebase.js"
+
 import React,{ useState } from "react";
 import{
     View,
@@ -51,8 +53,15 @@ export default function Register(){
             />
             <Buttons
                 title="CADASTRAR"
-                onPress={() => navigation.navigate('Login')}
-            />
+                onPress={async() => {
+                    try{
+                        await firebase.auth().createUserWithEmailAndPassword(email, password);
+                        navigation.navigate('Login'); 
+                    }catch(error: any) {
+                        alert(error.message);
+                    }
+                }}
+/>
             <Text style={style.little}>Já possui uma conta?</Text>
             <TouchableOpacity>
                 <Text style={style.big}

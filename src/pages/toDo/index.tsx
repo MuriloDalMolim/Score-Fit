@@ -44,6 +44,10 @@ export default function ToDo(){
                 visible={modalVisible}
                 onClose={() => setModalVisible(false)}
                 activities={activities}
+                Icon={AntDesign}
+                iconName="left"
+                IconRg={AntDesign}
+                iconNameRg="right"
             />
             <ScheduleItem
                 Icon={MaterialIcons}

@@ -81,5 +81,8 @@ export const style = StyleSheet.create({
     color:'white',
     fontWeight:'bold',
     fontSize:28
+  },
+  leftRight:{
+    flexDirection:"row"
   }
 })
