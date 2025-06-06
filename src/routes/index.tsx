@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../pages/login';
 import Register from '../pages/register';
 import HomePage from '../pages/homePage';
-import { RootStackParamList } from '../@types/navigation'; 
+import { RootStackParamList } from '../@types/navigation';
 import ConfigPage from '../pages/configPage';
 import PerfilEdit from '../pages/perfilEdit';
 import PlanilhaTreino from '../pages/planilhaTreino';

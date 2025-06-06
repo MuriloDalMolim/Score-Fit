@@ -8,37 +8,38 @@ import{
 from 'react-native';
 import { style } from "./styles";
 
-import {MaterialIcons} from '@expo/vector-icons';
+import {MaterialIcons, Feather, FontAwesome} from '@expo/vector-icons';
+import { themes } from "../../global/themes";
 
 type IconComponent = React.ComponentType<React.ComponentProps<typeof MaterialIcons>>;
 
 type Props = TextProps &{
-    Icon?: IconComponent,
-    Iconname?: string,
-    act?: string,
-    hour?: string
+    Icon?: IconComponent;
+    Iconname?: string;
+    act?: string;
+    hour?: string;
+    onEdit: () => void;
+    onDelete: () => void;
 }
 
 export const ScheduleItem = ((Props:Props)=>{
-    const{Icon,Iconname,act,hour,...rest} = Props
+    const{Icon,Iconname,act,hour, onEdit, onDelete} = Props
     const [marked, setMarked] = useState(false);
 
     const currentIcon = marked ? 'check-circle-outline' : Iconname ?? 'panorama-fisheye';
 
     return(
-    <>
         <View style={marked ? style.itenmarked : style.iten}>
             {Icon &&(
-                <TouchableOpacity onPress={() => setMarked(!marked)}>
-                <Icon
-                        style={style.icon}
+                <TouchableOpacity onPress={() => setMarked(!marked)} style={style.checkIconContainer}>
+                    <Icon
                         name={currentIcon as any}
                         size={40}
                         color={'black'}
                     />
                 </TouchableOpacity>
             )}
-            <View style={style.infos}>
+            <View style={style.textContainer}>
                 <View style={style.boxTrain}>
                     <Text style={style.train}>{act}</Text>
                 </View>
@@ -46,7 +47,15 @@ export const ScheduleItem = ((Props:Props)=>{
                     <Text style={style.atach}>{hour}</Text>
                 </View>
             </View>
+            
+            <View style={style.actionIconGroup}>
+                <TouchableOpacity onPress={onEdit} style={style.actionIcon}>
+                    <Feather name="edit" size={34} color={themes.colors.bluefosco}/>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={onDelete} style={style.actionIcon}>
+                    <FontAwesome name="trash-o" size={34} color={themes.colors.bluefosco}/>
+                </TouchableOpacity>
+            </View>
         </View>
-    </>
     )
 })

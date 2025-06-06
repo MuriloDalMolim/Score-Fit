@@ -1,53 +1,69 @@
-import { Dimensions, StyleSheet} from "react-native";
+import { StyleSheet} from "react-native";
 import { themes } from "../../global/themes";
 
 export const style = StyleSheet.create({
     iten:{
         backgroundColor:'#FFFF',
-        width:'90%',
+        width:'100%',
         height:'12%',
+        minHeight: 80,
+        maxHeight: 120,
         borderRadius:15,
         flexDirection:'row',
-        marginTop:10
+        marginTop:10,
+        alignSelf: 'center',
+        padding: 15,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        overflow: 'hidden',
     },
     itenmarked:{
         backgroundColor:themes.colors.offiten,
-        width:'90%',
+        width:'100  %',
         height:'12%',
+        minHeight: 80,
+        maxHeight: 120,
         borderRadius:15,
         flexDirection:'row',
-        marginTop:10
+        marginTop:10,
+        alignSelf: 'center',
+        padding: 15,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        overflow: 'hidden',
     },
-    icon:{
-        justifyContent:'center',
-        alignItems:'center',
-        width:'100%',
-        height:'100%',
-        marginTop:'50%'
-        
+    checkIconContainer: {
+      marginRight: 10,
+      padding: 5,
     },
-    infos:{
-        marginLeft:'3%',
-        marginRight:'2%',
-        width:'85%',
+    textContainer: {
+        flex: 1,
+        marginRight: 10,
     },
     train:{
-        fontSize:28,
-        color:'black'
+        fontSize:32,
+        fontWeight: 'bold',
+        color:'black',
+        marginBottom: 5,
     },
     boxTrain:{
-        height:'50%',
         width:'100%'
     },
     atach:{
-        fontSize:28,
-        color:themes.colors.bluefosco,
+        fontSize:22,
+        color:themes.colors.bluefosco, 
     },
     boxAtach:{
-        justifyContent:"space-between",
         flexDirection:'row',
-        height:'50%',
+        justifyContent:"flex-start",
         margin:0
+    },
+    actionIconGroup: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    actionIcon: {
+        marginLeft: 5,
+        padding: 0,
     }
-    
-})
+});

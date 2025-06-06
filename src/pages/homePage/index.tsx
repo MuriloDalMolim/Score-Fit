@@ -12,19 +12,22 @@ import { themes } from "../../global/themes";
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../@types/navigation'
+import {firebase} from "../../services/firebase"
 
 type NavigationProps = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 export default function HomePage(){
 
     const navigation = useNavigation<NavigationProps>();
+    const nomeCompleto = firebase.auth().currentUser?.displayName || '';
+    const primeiroNome = nomeCompleto.split(' ')[0];
 
     return(
         <>
         <View style={style.hello}>
             <View>
                 <Text style={style.helloText}>Bem vindo de volta,
-                    {'\n'}Fulano!
+                    {'\n'}{primeiroNome}!
                 </Text>
             </View>   
             <TouchableOpacity style={style.user}

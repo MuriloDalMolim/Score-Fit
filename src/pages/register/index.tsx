@@ -55,7 +55,10 @@ export default function Register(){
                 title="CADASTRAR"
                 onPress={async() => {
                     try{
-                        await firebase.auth().createUserWithEmailAndPassword(email, password);
+                        const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+                            await userCredential.user?.updateProfile({
+                                displayName: name,
+                            });
                         navigation.navigate('Login'); 
                     }catch(error: any) {
                         alert(error.message);
