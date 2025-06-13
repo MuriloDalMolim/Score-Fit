@@ -95,7 +95,7 @@ export const TrainEditModal = ({ visible, onClose, treino, onSave }: Props) => {
         exercicios: exercicios,
       });
 
-    onSave(); // para recarregar lista no pai
+    onSave(); 
     onClose();
   };
 
@@ -151,7 +151,13 @@ export const TrainEditModal = ({ visible, onClose, treino, onSave }: Props) => {
                 <Text style={style.ButtonText}>Salvar alterações</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={style.cancelButton} onPress={onClose}>
+              <TouchableOpacity
+                style={style.cancelButton}
+                onPress={() => {
+                  setStep(1);
+                  setEditando(null);
+                }}
+              >
                 <Text style={style.ButtonText}>Cancelar</Text>
               </TouchableOpacity>
             </>

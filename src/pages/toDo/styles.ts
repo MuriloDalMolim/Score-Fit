@@ -29,7 +29,7 @@ export const style = StyleSheet.create({
       borderTopColor: themes.colors.grayy,
     },
     addButton: {
-      backgroundColor: themes.colors.ciano, // Cor do botão adicionar
+      backgroundColor: themes.colors.ciano, 
       paddingVertical: 15,
       borderRadius: 8,
       alignItems: 'center',

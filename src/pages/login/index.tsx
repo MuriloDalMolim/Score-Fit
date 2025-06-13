@@ -3,7 +3,6 @@ import { firebase } from "../../services/firebase.js";
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { style } from "./styles";
-import {} from "@expo/vector-icons";
 import { BigUpper } from "../../components/bigUpper";
 import { DarkBot } from "../../components/darkBot";
 import { LoginRegister } from "../../components/loginRegister";

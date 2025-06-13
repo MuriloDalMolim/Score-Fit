@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import{
     View,
     Text,
-    TextProps,
     TouchableOpacity
 }
 from 'react-native';
@@ -13,18 +12,18 @@ import { themes } from "../../global/themes";
 
 type IconComponent = React.ComponentType<React.ComponentProps<typeof MaterialIcons>>;
 
-type Props = TextProps &{
+type Props = {
     Icon?: IconComponent;
     Iconname?: string;
     act?: string;
     hour?: string;
-    description?: string; // Adicionar esta linha
+    description?: string; 
     onEdit: () => void;
     onDelete: () => void;
 }
 
 export const ScheduleItem = ((Props:Props)=>{
-    const{Icon,Iconname,act,hour, description, onEdit, onDelete} = Props // Adicionar 'description' aqui
+    const{Icon,Iconname,act,hour, description, onEdit, onDelete} = Props 
     const [marked, setMarked] = useState(false);
 
     const currentIcon = marked ? 'check-circle-outline' : Iconname ?? 'panorama-fisheye';
@@ -46,7 +45,7 @@ export const ScheduleItem = ((Props:Props)=>{
                 </View>
                 <View style={style.boxAtach}>
                     <Text style={style.atach}>{hour}</Text>
-                    {description && <Text style={style.descriptionText}>{description}</Text>} {/* Adicionar esta linha */}
+                    {description && <Text style={style.descriptionText}>{description}</Text>} 
                 </View>
             </View>
 

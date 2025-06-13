@@ -68,7 +68,6 @@ export default function HomePage() {
           return;
         }
 
-        // Verifica se o treino de hoje já foi feito
         setTreinoHoje(ultimaConclusao === dataHojeStr);
       } else {
         setTreinoHoje(false);

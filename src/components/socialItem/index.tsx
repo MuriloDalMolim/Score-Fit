@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TextProps, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { style } from "./styles";
 import { themes } from "../../global/themes";
 
@@ -9,14 +9,14 @@ type IconComponent =
   | React.ComponentType<React.ComponentProps<typeof FontAwesome>>
   | React.ComponentType<React.ComponentProps<typeof MaterialIcons>>;
 
-type Props = TextProps & {
+type Props = {
   Icon?: IconComponent;
   Iconname?: string;
   IconFire?: IconComponent;
   IconNameFire?: string;
   name?: string;
   streak?: number;
-  onRemove?: () => void; // callback ao clicar em remover
+  onRemove?: () => void; 
 };
 
 export const SocialItem = ({

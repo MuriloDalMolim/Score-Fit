@@ -26,7 +26,7 @@ export default function PerfilEdit(){
     const currentUser = auth.currentUser;
     const [name, setName] = useState(currentUser?.displayName || '');
     const [email, setEmail] = useState(currentUser?.email || '');
-    const [isEmailChanging, setIsEmailChanging] = useState(false); // New state to track email change process
+    const [isEmailChanging, setIsEmailChanging] = useState(false); 
 
     useEffect(() => {
         if (currentUser) {
@@ -45,15 +45,14 @@ export default function PerfilEdit(){
             }
 
             if (email !== currentUser.email) {
-                // If email is being changed, trigger verification flow
                 if (!isEmailChanging) {
                     await currentUser.verifyBeforeUpdateEmail(email);
-                    setIsEmailChanging(true); // Set flag to indicate email change is pending verification
+                    setIsEmailChanging(true); 
                     Alert.alert(
                         "Verificação de E-mail Necessária",
                         "Um e-mail de verificação foi enviado para o novo endereço. Por favor, verifique sua caixa de entrada e clique no link para confirmar a alteração."
                     );
-                    return; // Exit function, wait for user to verify email
+                    return; 
                 }
             }
 
@@ -103,7 +102,7 @@ export default function PerfilEdit(){
                 value={email}
                 onChangeText={setEmail}
                 autoCapitalize="none"
-                editable={!isEmailChanging} // Disable email input if verification is pending
+                editable={!isEmailChanging} 
             />
             {isEmailChanging && (
                 <Text style={style.pendingEmailVerificationText}>

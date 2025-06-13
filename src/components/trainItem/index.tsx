@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TextProps, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { style } from "./styles";
 import { MaterialIcons } from "@expo/vector-icons";
 
@@ -7,7 +7,7 @@ type IconComponent = React.ComponentType<
   React.ComponentProps<typeof MaterialIcons>
 >;
 
-type Props = TextProps & {
+type Props = {
   Icon?: IconComponent;
   Iconname?: string;
   train?: string;
@@ -15,8 +15,8 @@ type Props = TextProps & {
   time?: string;
   weight?: string;
   hour?: string;
-  marcado?: boolean; // <- novo: vem do Firebase
-  onToggle?: () => void; // <- novo: atualiza o Firebase e o streak
+  marcado?: boolean; 
+  onToggle?: () => void; 
 };
 
 export const TrainItem = ({

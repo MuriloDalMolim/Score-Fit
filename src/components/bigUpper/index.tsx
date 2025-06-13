@@ -1,7 +1,6 @@
 import React from "react";
-import { View, Text, TextProps, Image } from "react-native";
+import { View, Text, Image } from "react-native";
 import { style } from "./styles";
-import {} from "@expo/vector-icons";
 import WhiteLogo from "../../assets/WhiteLogo.png";
 
 export const BigUpper = () => {

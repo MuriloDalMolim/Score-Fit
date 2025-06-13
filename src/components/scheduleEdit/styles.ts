@@ -9,7 +9,7 @@ export const style = StyleSheet.create({
     alignItems: 'center',
   },
   modalContent: {
-    backgroundColor: themes.colors.backgroud, // Fundo do modal igual ao background geral
+    backgroundColor: themes.colors.backgroud, 
     padding: 20,
     borderRadius: 10,
     width: '85%',
@@ -20,18 +20,18 @@ export const style = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
-    color: themes.colors.darkblue, // Cor do título do modal igual aos cabeçalhos
+    color: themes.colors.darkblue, 
   },
   input: {
-    backgroundColor: themes.colors.grayy, // Fundo do input
+    backgroundColor: themes.colors.grayy, 
     borderRadius: 8,
     padding: 10,
     marginBottom: 15,
     fontSize: 18,
-    color: themes.colors.darkblue, // Cor do texto do input
+    color: themes.colors.darkblue, 
   },
   saveButton: {
-    backgroundColor: themes.colors.ciano, // Cor do botão salvar
+    backgroundColor: themes.colors.ciano, 
     padding: 15,
     borderRadius: 8,
     alignItems: 'center',
@@ -43,7 +43,7 @@ export const style = StyleSheet.create({
     fontWeight: 'bold',
   },
   cancelButton: {
-    backgroundColor: themes.colors.darkblue, // Cor do botão cancelar
+    backgroundColor: themes.colors.darkblue, 
     padding: 15,
     borderRadius: 8,
     alignItems: 'center',

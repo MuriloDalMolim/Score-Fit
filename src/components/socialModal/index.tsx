@@ -145,7 +145,7 @@ export const SocialModal = ({ visible, onClose }: Props) => {
             style={{ marginBottom: 10 }}
             ListEmptyComponent={() =>
               !loading && (
-                <Text style={style.listEmptyText}> {/* APLICADO O ESTILO CORRETAMENTE AQUI */}
+                <Text style={style.listEmptyText}> 
                   Nenhum resultado encontrado
                 </Text>
               )

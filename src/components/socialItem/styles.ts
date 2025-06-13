@@ -5,16 +5,16 @@ export const style = StyleSheet.create({
   iten: {
     backgroundColor: "#ffff",
     width: "90%",
-    minHeight: 100, // Aumentei um pouco a altura mínima para melhor visualização
+    minHeight: 100, 
     borderRadius: 15,
     flexDirection: "row",
     marginTop: 10,
     marginBottom: 5,
-    justifyContent: "space-between", // Distribui o espaço entre os elementos
-    alignItems: "center", // Alinha os itens verticalmente ao centro
-    padding: 15, // Aumentei o padding para mais espaço interno
+    justifyContent: "space-between", 
+    alignItems: "center", 
+    padding: 15, 
     position: "relative",
-    shadowColor: "#000", // Adicionado sombra para dar um efeito de card
+    shadowColor: "#000", 
     shadowOffset: {
       width: 0,
       height: 2,
@@ -35,38 +35,38 @@ export const style = StyleSheet.create({
     color: themes.colors.fired,
   },
   itenText: {
-    fontSize: 28, // Ajustei o tamanho da fonte do nome
+    fontSize: 28, 
     fontWeight: "bold",
     marginLeft: 10,
-    color: themes.colors.darkblue, // Cor do texto do nome
-    flexShrink: 1, // Permite que o texto quebre linha se for muito longo
+    color: themes.colors.darkblue, 
+    flexShrink: 1, 
   },
   userColumn: {
-    width: "25%", // Aumentei um pouco a largura para o ícone do usuário
+    width: "25%", 
     alignItems: "center",
     justifyContent: "center",
-    marginRight: 10, // Adiciona espaço entre o ícone e o nome
+    marginRight: 10, 
   },
   textColumn: {
-    flex: 1, // Permite que esta coluna ocupe o espaço restante
-    justifyContent: "center", // Centraliza o texto verticalmente
+    flex: 1, 
+    justifyContent: "center", 
   },
   fireColumn: {
-    width: "20%", // Ajustei a largura para a streak
+    width: "20%", 
     alignItems: "center",
     justifyContent: "center",
   },
   streakText: {
-    fontSize: 28, // Ajustei o tamanho da fonte da streak
+    fontSize: 28, 
     fontWeight: "bold",
-    marginTop: -5, // Ajuste para posicionar o número mais próximo da chama
+    marginTop: -5, 
     textAlign: "center",
-    color: themes.colors.darkblue, // Cor do texto da streak
+    color: themes.colors.darkblue, 
   },
   removeButton: {
     position: "absolute",
-    top: 8, // Ajusta a posição vertical do botão
-    right: 8, // Ajusta a posição horizontal do botão
-    zIndex: 1, // Garante que o botão esteja acima de outros elementos
+    top: 8, 
+    right: 8, 
+    zIndex: 1, 
   },
 });

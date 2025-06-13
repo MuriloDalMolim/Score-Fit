@@ -58,8 +58,8 @@ export const style = StyleSheet.create({
         flexShrink: 1,
     },
     boxAtach:{
-        flexDirection:'row', // Alterado para 'row' para colocar hora e descrição na mesma linha
-        alignItems: 'center', // Alinha verticalmente os itens na linha
+        flexDirection:'row', 
+        alignItems: 'center', 
         justifyContent:"flex-start",
         margin:0
     },

@@ -41,10 +41,9 @@ export const ScheduleEdit: React.FC<Props> = ({
     const newOrUpdatedActivity: Atividade = {
       id: activityToEdit ? activityToEdit.id : Date.now().toString(),
       nome,
-      hora: hora.trim() === '' ? '00:00' : hora, // Define um valor padrão para 'hora' se estiver vazia
+      hora: hora.trim() === '' ? '00:00' : hora, 
     };
 
-    // Inclui a descrição SOMENTE se ela não estiver vazia
     if (descricao.trim() !== '') {
       newOrUpdatedActivity.descricao = descricao;
     }

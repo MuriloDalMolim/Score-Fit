@@ -114,7 +114,7 @@ export default function PlanilhaTreino() {
       const userDoc = await userRef.get();
       const userData = userDoc.data();
 
-      const hoje = DateTime.now().toISODate(); // '2025-06-12'
+      const hoje = DateTime.now().toISODate(); 
       const ultima = userData?.ultimaConclusao || null;
 
       if (ultima !== hoje) {
@@ -197,7 +197,7 @@ export default function PlanilhaTreino() {
           onClose={() => setSelectModalVisible(false)}
           treinos={workouts}
           onSelecionarTreino={(treino) => {
-            console.log("Treino selecionado:", treino.nome); // ✅ pode remover depois
+            console.log("Treino selecionado:", treino.nome); 
             setTreinoSelecionado(treino);
           }}
         />

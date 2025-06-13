@@ -13,21 +13,21 @@ export const style = StyleSheet.create({
     width:'90%',
     backgroundColor:themes.colors.backgroud,
     borderRadius:10,
-    paddingBottom:20, // Aumentei um pouco o padding inferior
-    maxHeight: '80%', // Limita a altura do modal para não ocupar a tela toda em dispositivos menores
+    paddingBottom:20, 
+    maxHeight: '80%', 
   },
   upper:{
     backgroundColor:themes.colors.darkblue,
-    paddingVertical:30, // Reduzi o padding vertical para um cabeçalho mais compacto
+    paddingVertical:30, 
     borderTopLeftRadius:10,
     borderTopRightRadius:10,
     alignItems:'center',
-    justifyContent: 'center', // Centraliza o texto verticalmente
+    justifyContent: 'center', 
   },
   upperText:{
     color:'white',
     fontWeight:'bold',
-    fontSize:28, // Reduzi um pouco o tamanho da fonte para o título
+    fontSize:28, 
     textAlign: 'center',
   },
   itemRow:{
@@ -35,12 +35,12 @@ export const style = StyleSheet.create({
     flexDirection:'row',
     justifyContent:'space-between',
     alignItems:'center',
-    paddingHorizontal:15, // Aumentei o padding horizontal
-    paddingVertical:10, // Adicionei padding vertical para espaçamento interno dos itens
-    marginHorizontal:15, // Aumentei a margem horizontal
+    paddingHorizontal:15, 
+    paddingVertical:10, 
+    marginHorizontal:15, 
     marginVertical:5,
     borderRadius:15,
-    shadowColor: "#000", // Adicionado sombra para dar um efeito de card
+    shadowColor: "#000", 
     shadowOffset: {
       width: 0,
       height: 1,
@@ -50,69 +50,69 @@ export const style = StyleSheet.create({
     elevation: 3,
   },
   itemText:{
-    fontSize:22, // Ajustei o tamanho da fonte do nome do usuário
+    fontSize:22, 
     fontWeight:'500',
     marginLeft:10,
-    color: themes.colors.darkblue, // Cor do texto do nome do usuário
-    flexShrink: 1, // Permite que o texto quebre linha se for muito longo
+    color: themes.colors.darkblue, 
+    flexShrink: 1, 
   },
   icon:{
-    color:themes.colors.lightbluu, // Cor do ícone de adicionar
+    color:themes.colors.lightbluu, 
     marginLeft:10,
   },
   user:{
     color:themes.colors.darkblue,
   },
-  createButton:{ // Mantido o nome para consistência, mas é o botão de adicionar amigo
+  createButton:{ 
     backgroundColor:themes.colors.ciano,
     marginHorizontal:20,
     paddingVertical:15,
-    marginTop:20, // Aumentei a margem superior
+    marginTop:20, 
     borderRadius:15,
     alignItems:'center',
   },
   createButtonText: {
     color:'white',
     fontWeight:'bold',
-    fontSize:24, // Ajustei o tamanho da fonte
+    fontSize:24, 
   },
-  saveButton: { // O botão "Finalizar"
-    backgroundColor:themes.colors.ciano, // Mudei para um azul mais escuro, para ser mais "finalizador"
+  saveButton: { 
+    backgroundColor:themes.colors.ciano, 
     marginHorizontal:20,
     paddingVertical:15,
-    marginTop:10, // Reduzi a margem superior para ficar mais próximo do botão de criar
+    marginTop:10, 
     borderRadius:15,
     alignItems:'center',
   },
   saveButtonText: {
     color:'white',
     fontWeight:'bold',
-    fontSize:24, // Ajustei o tamanho da fonte
+    fontSize:24, 
   },
   left:{
     flexDirection:"row",
-    alignItems: "center", // Alinha o ícone do usuário e o nome verticalmente
+    alignItems: "center", 
   },
-  searchInput: { // Novo estilo para o TextInput de busca
+  searchInput: { 
     flex: 1,
     borderWidth: 1,
-    borderColor: themes.colors.grayy, // Cor da borda
-    backgroundColor: 'white', // Fundo branco
-    padding: 12, // Aumentei o padding
-    borderRadius: 8, // Borda arredondada
+    borderColor: themes.colors.grayy, 
+    backgroundColor: 'white', 
+    padding: 12, 
+    borderRadius: 8, 
     marginHorizontal: 15,
-    marginBottom: 15, // Espaçamento inferior
-    fontSize: 18, // Tamanho da fonte
-    color: themes.colors.darkblue, // Cor do texto
+    marginBottom: 15, 
+    fontSize: 18, 
+    color: themes.colors.darkblue, 
   },
-  searchContainer: { // Container para o input de busca e, futuramente, um botão de busca
+  searchContainer: { 
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 15,
     marginBottom: 10,
-    marginTop: 20, // Espaçamento superior
+    marginTop: 20, 
   },
-  listEmptyText: { // Estilo para o texto "Nenhum resultado encontrado"
+  listEmptyText: { 
     textAlign: 'center',
     color: themes.colors.dkgrayy,
     fontSize: 16,
