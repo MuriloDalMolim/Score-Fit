@@ -108,29 +108,15 @@ export const SocialModal = ({ visible, onClose }: Props) => {
             <Text style={style.upperText}>Gerenciar Amigos</Text>
           </View>
 
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              marginBottom: 10,
-            }}
-          >
+          <View style={style.searchContainer}>
             <TextInput
               placeholder="Buscar usuários por nome"
               value={searchText}
               onChangeText={(text) => {
                 setSearchText(text);
-                buscarUsuarios(); // busca ao digitar
+                buscarUsuarios();
               }}
-              style={{
-                flex: 1,
-                borderWidth: 1,
-                borderColor: "#ccc",
-                padding: 10,
-                borderRadius: 8,
-                marginRight: 10,
-                color: "#000",
-              }}
+              style={style.searchInput}
               returnKeyType="search"
               autoCorrect={false}
             />
@@ -146,20 +132,20 @@ export const SocialModal = ({ visible, onClose }: Props) => {
                 <View style={style.left}>
                   <FontAwesome
                     name="user-circle-o"
-                    size={60}
+                    size={40}
                     style={style.user}
                   />
                   <Text style={style.itemText}>{item.nome}</Text>
                 </View>
                 <TouchableOpacity onPress={() => adicionarAmigo(item.id)}>
-                  <MaterialIcons name="add-box" size={40} style={style.icon} />
+                  <MaterialIcons name="add-box" size={30} style={style.icon} />
                 </TouchableOpacity>
               </View>
             )}
             style={{ marginBottom: 10 }}
             ListEmptyComponent={() =>
               !loading && (
-                <Text style={{ textAlign: "center", color: "#777" }}>
+                <Text style={style.listEmptyText}> {/* APLICADO O ESTILO CORRETAMENTE AQUI */}
                   Nenhum resultado encontrado
                 </Text>
               )

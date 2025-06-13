@@ -4,7 +4,7 @@ import{
     Text,
     TextProps,
     TouchableOpacity
-} 
+}
 from 'react-native';
 import { style } from "./styles";
 
@@ -18,12 +18,13 @@ type Props = TextProps &{
     Iconname?: string;
     act?: string;
     hour?: string;
+    description?: string; // Adicionar esta linha
     onEdit: () => void;
     onDelete: () => void;
 }
 
 export const ScheduleItem = ((Props:Props)=>{
-    const{Icon,Iconname,act,hour, onEdit, onDelete} = Props
+    const{Icon,Iconname,act,hour, description, onEdit, onDelete} = Props // Adicionar 'description' aqui
     const [marked, setMarked] = useState(false);
 
     const currentIcon = marked ? 'check-circle-outline' : Iconname ?? 'panorama-fisheye';
@@ -45,9 +46,10 @@ export const ScheduleItem = ((Props:Props)=>{
                 </View>
                 <View style={style.boxAtach}>
                     <Text style={style.atach}>{hour}</Text>
+                    {description && <Text style={style.descriptionText}>{description}</Text>} {/* Adicionar esta linha */}
                 </View>
             </View>
-            
+
             <View style={style.actionIconGroup}>
                 <TouchableOpacity onPress={onEdit} style={style.actionIcon}>
                     <Feather name="edit" size={34} color={themes.colors.bluefosco}/>

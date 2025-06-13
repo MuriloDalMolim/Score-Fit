@@ -228,6 +228,7 @@ export default function ToDo() {
                 Iconname="panorama-fisheye"
                 act={activity.nome}
                 hour={activity.hora}
+                description={activity.descricao} // Adicionar esta linha
                 onEdit={() => openEditModal(activity)}
                 onDelete={() => handleDeleteActivity(activity.id)}
               />
