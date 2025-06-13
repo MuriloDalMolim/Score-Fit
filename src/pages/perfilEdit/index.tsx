@@ -1,8 +1,10 @@
-import React,{ useState, useEffect } from "react";
-import{
+import React, { useState, useEffect } from "react";
+import {
     View,
-    Alert
-} 
+    Alert,
+    Text,
+    TouchableOpacity
+}
 from 'react-native';
 import { style } from "./styles";
 import {AntDesign, FontAwesome} from '@expo/vector-icons'
@@ -20,10 +22,11 @@ type NavigationProps = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 export default function PerfilEdit(){
 
     const navigation = useNavigation<NavigationProps>();
-    const auth = firebase.auth(); 
+    const auth = firebase.auth();
     const currentUser = auth.currentUser;
-    const [name, setName] = useState(currentUser?.displayName || ''); 
+    const [name, setName] = useState(currentUser?.displayName || '');
     const [email, setEmail] = useState(currentUser?.email || '');
+    const [isEmailChanging, setIsEmailChanging] = useState(false); // New state to track email change process
 
     useEffect(() => {
         if (currentUser) {
@@ -42,8 +45,16 @@ export default function PerfilEdit(){
             }
 
             if (email !== currentUser.email) {
-                await currentUser.updateEmail(email);
-                changesMade = true;
+                // If email is being changed, trigger verification flow
+                if (!isEmailChanging) {
+                    await currentUser.verifyBeforeUpdateEmail(email);
+                    setIsEmailChanging(true); // Set flag to indicate email change is pending verification
+                    Alert.alert(
+                        "Verificação de E-mail Necessária",
+                        "Um e-mail de verificação foi enviado para o novo endereço. Por favor, verifique sua caixa de entrada e clique no link para confirmar a alteração."
+                    );
+                    return; // Exit function, wait for user to verify email
+                }
             }
 
             if (changesMade) {
@@ -59,6 +70,8 @@ export default function PerfilEdit(){
                 errorMessage = "E-mail inválido.";
             } else if (error.code === 'auth/email-already-in-use') {
                 errorMessage = "Este e-mail já está em uso por outra conta.";
+            } else if (error.code === 'auth/requires-recent-login') {
+                errorMessage = "Por favor, faça login novamente para atualizar seu e-mail. Esta operação requer autenticação recente.";
             }
             Alert.alert("Erro", errorMessage + `\nDetalhes: ${error.message}`);
         }
@@ -73,11 +86,11 @@ export default function PerfilEdit(){
             onPress={() => navigation.navigate('ConfigPage')}
         />
         <View style={style.mid}>
-            <View style={style.user}>       
-                <FontAwesome 
-                    name="user" 
-                    size={170} 
-                    color="white" 
+            <View style={style.user}>
+                <FontAwesome
+                    name="user"
+                    size={170}
+                    color="white"
                 />
             </View>
             <Input
@@ -90,14 +103,20 @@ export default function PerfilEdit(){
                 value={email}
                 onChangeText={setEmail}
                 autoCapitalize="none"
+                editable={!isEmailChanging} // Disable email input if verification is pending
             />
+            {isEmailChanging && (
+                <Text style={style.pendingEmailVerificationText}>
+                    Aguardando verificação do novo e-mail. Por favor, verifique sua caixa de entrada.
+                </Text>
+            )}
             <Buttons
                 title="Salvar"
                 onPress={handleSaveChanges}
             />
         </View>
         <DarkBot
-        />       
+        />
         </>
     )
 }

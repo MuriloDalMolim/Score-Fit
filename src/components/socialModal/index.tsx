@@ -1,22 +1,101 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Modal,
   View,
   Text,
   TouchableOpacity,
   FlatList,
-} from 'react-native';
-import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
-import { style } from './styles';
+  TextInput,
+  ActivityIndicator,
+} from "react-native";
+import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { style } from "./styles";
+import { firebase } from "../../services/firebase";
 
 type Props = {
   visible: boolean;
   onClose: () => void;
-  names: string[];
 };
 
-export const SocialModal = ({ visible, onClose, names }:Props)=>{
-  return(
+type UserSearchResult = {
+  id: string;
+  nome: string;
+};
+
+export const SocialModal = ({ visible, onClose }: Props) => {
+  const [searchText, setSearchText] = useState("");
+  const [results, setResults] = useState<UserSearchResult[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [meusAmigos, setMeusAmigos] = useState<string[]>([]);
+
+  const userId = firebase.auth().currentUser?.uid;
+
+  useEffect(() => {
+    if (userId && visible) {
+      firebase
+        .firestore()
+        .collection("users")
+        .doc(userId)
+        .get()
+        .then((doc) => {
+          const data = doc.data();
+          setMeusAmigos(data?.amigos || []);
+        });
+    }
+  }, [userId, visible]);
+
+  const buscarUsuarios = async () => {
+    if (searchText.trim().length === 0) {
+      setResults([]);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const usersRef = firebase.firestore().collection("users");
+      const querySnapshot = await usersRef
+        .where("nome", ">=", searchText)
+        .where("nome", "<=", searchText + "\uf8ff")
+        .limit(10)
+        .get();
+
+      const users: UserSearchResult[] = [];
+      querySnapshot.forEach((doc) => {
+        if (doc.id !== userId) {
+          users.push({ id: doc.id, nome: doc.data().nome });
+        }
+      });
+
+      setResults(users);
+    } catch (error) {
+      console.error("Erro ao buscar usuários:", error);
+    }
+    setLoading(false);
+  };
+
+  const adicionarAmigo = async (amigoId: string) => {
+    if (!userId) return;
+    if (meusAmigos.includes(amigoId)) {
+      alert("Esse usuário já está na sua lista de amigos.");
+      return;
+    }
+
+    try {
+      const userRef = firebase.firestore().collection("users").doc(userId);
+      await userRef.update({
+        amigos: firebase.firestore.FieldValue.arrayUnion(amigoId),
+      });
+
+      setMeusAmigos((prev) => [...prev, amigoId]);
+      setResults((prev) => prev.filter((r) => r.id !== amigoId));
+      alert("Amigo adicionado!");
+    } catch (error) {
+      alert("Erro ao adicionar amigo.");
+      console.error(error);
+    }
+  };
+
+  return (
     <Modal
       transparent
       animationType="fade"
@@ -29,21 +108,62 @@ export const SocialModal = ({ visible, onClose, names }:Props)=>{
             <Text style={style.upperText}>Gerenciar Amigos</Text>
           </View>
 
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginBottom: 10,
+            }}
+          >
+            <TextInput
+              placeholder="Buscar usuários por nome"
+              value={searchText}
+              onChangeText={(text) => {
+                setSearchText(text);
+                buscarUsuarios(); // busca ao digitar
+              }}
+              style={{
+                flex: 1,
+                borderWidth: 1,
+                borderColor: "#ccc",
+                padding: 10,
+                borderRadius: 8,
+                marginRight: 10,
+                color: "#000",
+              }}
+              returnKeyType="search"
+              autoCorrect={false}
+            />
+          </View>
+
+          {loading && <ActivityIndicator size="small" color="#1B3F5C" />}
+
           <FlatList
-            data={names}
-            keyExtractor={(item, index) => index.toString()}
+            data={results}
+            keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
               <View style={style.itemRow}>
-                  <View style={style.left}>
-                    <FontAwesome name="user-circle-o" size={60} style={style.user}/>
-                    <Text style={style.itemText}>{item}</Text>
-                  </View>
-                  <TouchableOpacity>
-                    <MaterialIcons name="add-box" size={40} style={style.icon}/>
-                  </TouchableOpacity>
+                <View style={style.left}>
+                  <FontAwesome
+                    name="user-circle-o"
+                    size={60}
+                    style={style.user}
+                  />
+                  <Text style={style.itemText}>{item.nome}</Text>
+                </View>
+                <TouchableOpacity onPress={() => adicionarAmigo(item.id)}>
+                  <MaterialIcons name="add-box" size={40} style={style.icon} />
+                </TouchableOpacity>
               </View>
             )}
             style={{ marginBottom: 10 }}
+            ListEmptyComponent={() =>
+              !loading && (
+                <Text style={{ textAlign: "center", color: "#777" }}>
+                  Nenhum resultado encontrado
+                </Text>
+              )
+            }
           />
 
           <TouchableOpacity style={style.saveButton} onPress={onClose}>
@@ -54,4 +174,3 @@ export const SocialModal = ({ visible, onClose, names }:Props)=>{
     </Modal>
   );
 };
-

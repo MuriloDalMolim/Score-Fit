@@ -20,6 +20,13 @@ export const style = StyleSheet.create({
         justifyContent: 'center',
         marginTop:'10%',
         marginRight:'5%'
+    },
+     pendingEmailVerificationText: { 
+        marginTop: 10,
+        color: themes.colors.fire,
+        fontSize: 16,
+        textAlign: 'center',
+        marginHorizontal: 20,
     }
 
 })

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Modal,
   View,
@@ -6,62 +6,66 @@ import {
   TextInput,
   TouchableOpacity,
   FlatList,
-  Alert
-} from 'react-native';
-import { Feather, FontAwesome } from '@expo/vector-icons';
-import { Treino, Exercicio } from '../../@types/treino';
-import { style } from './styles';
-import { firebase } from '../../services/firebase';
+  Alert,
+} from "react-native";
+import { Feather, FontAwesome } from "@expo/vector-icons";
+import { Treino, Exercicio } from "../../@types/treino";
+import { style } from "./styles";
+import { firebase } from "../../services/firebase";
 
 type Props = {
   visible: boolean;
   onClose: () => void;
   treino: Treino;
-  onSave: () => void; 
+  onSave: () => void;
 };
 
 export const TrainEditModal = ({ visible, onClose, treino, onSave }: Props) => {
   const [step, setStep] = useState(1);
   const [nomeTreino, setNomeTreino] = useState(treino.nome);
-  const [exercicios, setExercicios] = useState<Exercicio[]>([...treino.exercicios]);
+  const [exercicios, setExercicios] = useState<Exercicio[]>([
+    ...treino.exercicios,
+  ]);
   const [editando, setEditando] = useState<Exercicio | null>(null);
 
-  const [form, setForm] = useState<Omit<Exercicio, 'id'>>({
-    nome: '',
-    series: '',
-    descanso: '',
-    carga: '',
+  const [form, setForm] = useState<Omit<Exercicio, "id">>({
+    nome: "",
+    series: "",
+    descanso: "",
+    carga: "",
+    feito: false,
   });
 
   const userId = firebase.auth().currentUser?.uid;
 
   const salvarExercicio = () => {
-    if (!form.nome.trim()) return Alert.alert('Erro', 'Preencha o nome do exercício.');
+    if (!form.nome.trim())
+      return Alert.alert("Erro", "Preencha o nome do exercício.");
 
     if (editando) {
-      setExercicios(prev =>
-        prev.map(ex => ex.id === editando.id ? { ...editando, ...form } : ex)
+      setExercicios((prev) =>
+        prev.map((ex) => (ex.id === editando.id ? { ...ex, ...form } : ex))
       );
     } else {
-      setExercicios(prev => [
+      setExercicios((prev) => [
         ...prev,
-        { id: String(Date.now()), ...form }
+        { id: String(Date.now()), ...form, feito: false },
       ]);
     }
 
-    setForm({ nome: '', series: '', descanso: '', carga: '' });
+    setForm({ nome: "", series: "", descanso: "", carga: "", feito: false });
     setEditando(null);
     setStep(1);
   };
 
   const removerExercicio = (id: string) => {
-    Alert.alert('Remover exercício', 'Deseja remover este exercício?', [
-      { text: 'Cancelar', style: 'cancel' },
+    Alert.alert("Remover exercício", "Deseja remover este exercício?", [
+      { text: "Cancelar", style: "cancel" },
       {
-        text: 'Remover',
-        style: 'destructive',
-        onPress: () => setExercicios(prev => prev.filter(e => e.id !== id))
-      }
+        text: "Remover",
+        style: "destructive",
+        onPress: () => setExercicios((prev) => prev.filter((e) => e.id !== id)),
+      },
     ]);
   };
 
@@ -72,6 +76,7 @@ export const TrainEditModal = ({ visible, onClose, treino, onSave }: Props) => {
       series: ex.series,
       descanso: ex.descanso,
       carga: ex.carga,
+      feito: ex.feito ?? false,
     });
     setStep(2);
   };
@@ -79,10 +84,11 @@ export const TrainEditModal = ({ visible, onClose, treino, onSave }: Props) => {
   const salvarAlteracoes = async () => {
     if (!userId) return;
 
-    await firebase.firestore()
-      .collection('users')
+    await firebase
+      .firestore()
+      .collection("users")
       .doc(userId)
-      .collection('workouts')
+      .collection("workouts")
       .doc(treino.id)
       .update({
         nome: nomeTreino,
@@ -116,8 +122,14 @@ export const TrainEditModal = ({ visible, onClose, treino, onSave }: Props) => {
                       <TouchableOpacity onPress={() => editarExercicio(item)}>
                         <Feather name="edit" size={28} style={style.icon} />
                       </TouchableOpacity>
-                      <TouchableOpacity onPress={() => removerExercicio(item.id)}>
-                        <FontAwesome name="trash-o" size={28} style={style.icon} />
+                      <TouchableOpacity
+                        onPress={() => removerExercicio(item.id)}
+                      >
+                        <FontAwesome
+                          name="trash-o"
+                          size={28}
+                          style={style.icon}
+                        />
                       </TouchableOpacity>
                     </View>
                   </View>
@@ -125,11 +137,17 @@ export const TrainEditModal = ({ visible, onClose, treino, onSave }: Props) => {
                 style={{ marginBottom: 10, maxHeight: 250 }}
               />
 
-              <TouchableOpacity style={style.createButton} onPress={() => setStep(2)}>
+              <TouchableOpacity
+                style={style.createButton}
+                onPress={() => setStep(2)}
+              >
                 <Text style={style.ButtonText}>+ Adicionar exercício</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={style.saveButton} onPress={salvarAlteracoes}>
+              <TouchableOpacity
+                style={style.saveButton}
+                onPress={salvarAlteracoes}
+              >
                 <Text style={style.ButtonText}>Salvar alterações</Text>
               </TouchableOpacity>
 
@@ -139,7 +157,9 @@ export const TrainEditModal = ({ visible, onClose, treino, onSave }: Props) => {
             </>
           ) : (
             <>
-              <Text style={style.upperText}>{editando ? 'Editar exercício' : 'Novo exercício'}</Text>
+              <Text style={style.upperText}>
+                {editando ? "Editar exercício" : "Novo exercício"}
+              </Text>
 
               <TextInput
                 style={style.input}
@@ -168,14 +188,20 @@ export const TrainEditModal = ({ visible, onClose, treino, onSave }: Props) => {
                 onChangeText={(text) => setForm({ ...form, descanso: text })}
               />
 
-              <TouchableOpacity style={style.saveButton} onPress={salvarExercicio}>
+              <TouchableOpacity
+                style={style.saveButton}
+                onPress={salvarExercicio}
+              >
                 <Text style={style.ButtonText}>Salvar exercício</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={style.cancelButton} onPress={() => {
-                setStep(1);
-                setEditando(null);
-              }}>
+              <TouchableOpacity
+                style={style.cancelButton}
+                onPress={() => {
+                  setStep(1);
+                  setEditando(null);
+                }}
+              >
                 <Text style={style.ButtonText}>Voltar</Text>
               </TouchableOpacity>
             </>

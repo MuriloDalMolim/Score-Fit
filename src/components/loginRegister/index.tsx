@@ -18,7 +18,7 @@ const {title,...rest } = Props;
     <>
     <View style={style.bkground}>
         {title && <Text style={style.text}>{title}</Text>}
-        <View style={style.line}> </View>
+        <View style={style.line}></View>
     </View>
     </>
     )
